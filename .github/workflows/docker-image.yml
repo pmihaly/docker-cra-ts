@@ -14,8 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+
+    - name: Docker compose up in background
       run: docker-compose up -d
       
+      
+    - name: Lint
+      run: docker-compose exec web yarn lint
+
+      
     - name: Run tests
-      run: docker-compose exec -e CI=true web yarn test
+      run: docker-compose exec -e CI=true -T web yarn test
