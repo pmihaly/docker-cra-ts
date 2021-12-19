@@ -20,7 +20,7 @@ jobs:
       
       
     - name: Lint
-      run: docker-compose exec web yarn lint
+      run: docker-compose exec -T web yarn lint
 
       
     - name: Run tests
