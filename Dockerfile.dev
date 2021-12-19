@@ -1,0 +1,13 @@
+FROM node:alpine
+
+WORKDIR /app
+
+COPY package.json .
+COPY yarn.lock .
+
+RUN yarn install --frozen-lockfile
+
+# No need to copy: we're assuming that the needed files are mapped with volumes
+# COPY . .
+
+CMD [ "yarn", "start" ]
